@@ -41,7 +41,9 @@ export async function connectDB() {
   // If connection promise exists, wait for it
   if (!cached.promise) {
     cached.promise = mongoose
-      .connect(MONGODB_URI)
+      .connect(MONGODB_URI, {
+        dbName: "medimeet",
+      })
       .then((mongoose) => {
         console.log("✅ [MongoDB] Connected successfully");
         return mongoose;
