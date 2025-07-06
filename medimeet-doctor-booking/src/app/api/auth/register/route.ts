@@ -1,5 +1,6 @@
 import { connectDB } from "@/lib/mongoose";
 import User from "@/models/User";
+import bcrypt from "bcryptjs";
 import { NextResponse } from "next/server";
 
 export async function POST(request: Request) {
@@ -28,10 +29,27 @@ export async function POST(request: Request) {
       );
     }
 
-    // ⏸️ Stop here for now — next we'll hash password and save the user
+    // 3️⃣ Hash the password using bcrypt
+    const hashedPassword = await bcrypt.hash(password, 10); // 10 = salt rounds
+
+    // Create the new user
+    const newUser = await User.create({
+      name,
+      email,
+      password: hashedPassword,
+    });
+
+    // Return success
     return NextResponse.json(
-      { message: "User does not exist yet — ready to create!" },
-      { status: 200 }
+      {
+        message: "User created successfully!",
+        user: {
+          _id: newUser._id,
+          name: newUser.name,
+          email: newUser.email,
+        },
+      },
+      { status: 201 }
     );
   } catch (error) {
     console.error("Registration error:", error);
