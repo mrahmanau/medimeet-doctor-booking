@@ -20,5 +20,5 @@ export function checkRole(
     );
   }
 
-  return null; // ✅ Role is allowed
+  return null;
 }

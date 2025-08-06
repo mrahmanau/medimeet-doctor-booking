@@ -8,7 +8,7 @@ export interface IUser extends Document {
   name: string;
   email: string;
   password: string;
-  role: "patient" | "admin"; // Use string union for role safety
+  role: "patient" | "admin";
   createdAt: Date;
 }
 

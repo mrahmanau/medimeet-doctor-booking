@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
+import Navbar from "@/components/shared/Navbar";
+import Footer from "@/components/shared/Footer";
 
 // Acts like a master wrapper for all pages
 // Defines global styles, fonts, metadata, and layout structure
@@ -34,8 +36,12 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
+        {/* Navbar appears on every page */}
+        <Navbar />
         {/* Main page content will be injected here */}
         {children}
+
+        <Footer />
       </body>
     </html>
   );
