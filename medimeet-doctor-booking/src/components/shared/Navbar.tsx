@@ -31,10 +31,10 @@ const Navbar = () => {
               Home
             </Link>
             <Link
-              href="/about"
+              href="/appointment"
               className="text-gray-700 dark:text-gray-200 hover:text-blue-500"
             >
-              About
+              Appointement
             </Link>
             <Link
               href="/contact"
@@ -52,7 +52,7 @@ const Navbar = () => {
 
           {/* Mobile Hamburger Icon */}
           <button
-            className="md:hidden text-gray-700 dark:text-gray-200"
+            className="md:hidden text-gray-700 dark:text-gray-200 hover:cursor-pointer"
             onClick={toggleMenu}
             aria-label="Toggle menu"
           >
